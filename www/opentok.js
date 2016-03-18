@@ -262,8 +262,8 @@ TBGetZIndex = function(ele) {
 
 TBGetScreenRatios = function() {
   return {
-    widthRatio: window.outerWidth / window.innerWidth,
-    heightRatio: window.outerHeight / window.innerHeight
+    widthRatio: window.devicePixelRatio,
+    heightRatio: window.devicePixelRatio
   };
 };
 
@@ -601,7 +601,7 @@ TBSession = (function() {
     element = streamElements[elementId];
     if (element) {
       element.parentNode.removeChild(element);
-      delete streamElements[elementId];
+      delete streamElements[streamId];
       TBUpdateObjects();
     }
     return Cordova.exec(TBSuccess, TBError, OTPlugin, "unsubscribe", [subscriber.streamId]);

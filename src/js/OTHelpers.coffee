@@ -96,8 +96,8 @@ TBGetZIndex = (ele) ->
 TBGetScreenRatios = ()->
     # Ratio between browser window size and viewport size
     return {
-        widthRatio: window.outerWidth / window.innerWidth,
-        heightRatio: window.outerHeight / window.innerHeight
+        widthRatio: window.devicePixelRatio,
+        heightRatio: window.devicePixelRatio
     }
 
 pdebug = (msg, data) ->
