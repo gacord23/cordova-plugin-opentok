@@ -38,6 +38,7 @@ class TBSubscriber
     pdebug "creating subscriber", properties
     @streamId = stream.streamId
     if(properties? && properties.width=="100%" && properties.height == "100%")
+      fullSize = true;
       element.style.width="100%"
       element.style.height="100%"
       properties.width = ""
@@ -58,7 +59,7 @@ class TBSubscriber
     if (not width?) or width == 0 or (not height?) or height==0
       width = DefaultWidth
       height = DefaultHeight
-    obj = replaceWithVideoStream(divName, stream.streamId, {width:width, height:height})
+    obj = replaceWithVideoStream(divName, stream.streamId, {width: (fullSize ? "100%" : width),height: (fullSize ? "100%" : height)})
     position = getPosition(obj.id)
     ratios = TBGetScreenRatios()
     pdebug "final subscriber position", position

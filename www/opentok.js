@@ -827,7 +827,7 @@ TBSubscriber = (function() {
   };
 
   function TBSubscriber(stream, divName, properties) {
-    var divPosition, element, height, name, obj, position, ratios, subscribeToAudio, subscribeToVideo, width, zIndex, _ref, fullSize;
+    var divPosition, element, fullSize, height, name, obj, position, ratios, subscribeToAudio, subscribeToVideo, width, zIndex, _ref;
     element = document.getElementById(divName);
     pdebug("creating subscriber", properties);
     this.streamId = stream.streamId;
@@ -859,8 +859,12 @@ TBSubscriber = (function() {
       height = DefaultHeight;
     }
     obj = replaceWithVideoStream(divName, stream.streamId, {
-      width: (fullSize ? "100%" : width),
-      height: (fullSize ? "100%" : height)
+      width: fullSize != null ? fullSize : {
+        "100%": width
+      },
+      height: fullSize != null ? fullSize : {
+        "100%": height
+      }
     });
     position = getPosition(obj.id);
     ratios = TBGetScreenRatios();
