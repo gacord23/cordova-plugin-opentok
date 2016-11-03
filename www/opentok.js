@@ -855,16 +855,12 @@ TBSubscriber = (function() {
       }
     }
     if ((width == null) || width === 0 || (height == null) || height === 0) {
-      width = DefaultWidth;
-      height = DefaultHeight;
+      width = fullSize ? "100%" : DefaultWidth;
+      height = fullsize ? "100%" : DefaultHeight;
     }
     obj = replaceWithVideoStream(divName, stream.streamId, {
-      width: fullSize != null ? fullSize : {
-        "100%": width
-      },
-      height: fullSize != null ? fullSize : {
-        "100%": height
-      }
+      width: width,
+      height: height
     });
     position = getPosition(obj.id);
     ratios = TBGetScreenRatios();

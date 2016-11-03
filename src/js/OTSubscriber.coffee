@@ -57,9 +57,9 @@ class TBSubscriber
       if(properties.subscribeToAudio? and properties.subscribeToAudio == false)
         subscribeToAudio="false"
     if (not width?) or width == 0 or (not height?) or height==0
-      width = DefaultWidth
-      height = DefaultHeight
-    obj = replaceWithVideoStream(divName, stream.streamId, {width: (fullSize ? "100%" : width),height: (fullSize ? "100%" : height)})
+      width = if fullSize then "100%" else DefaultWidth
+      height = if fullsize then "100%" else DefaultHeight
+    obj = replaceWithVideoStream(divName, stream.streamId, {width:width, height:height})
     position = getPosition(obj.id)
     ratios = TBGetScreenRatios()
     pdebug "final subscriber position", position
