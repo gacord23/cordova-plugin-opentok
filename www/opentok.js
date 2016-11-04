@@ -856,7 +856,7 @@ TBSubscriber = (function() {
     }
     if ((width == null) || width === 0 || (height == null) || height === 0) {
       width = fullSize ? "100%" : DefaultWidth;
-      height = fullsize ? "100%" : DefaultHeight;
+      height = fullSize ? "100%" : DefaultHeight;
     }
     obj = replaceWithVideoStream(divName, stream.streamId, {
       width: width,
